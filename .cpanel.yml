@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home1/ericso63/public_html
+    - /bin/mkdir -p $DEPLOYPATH/api
+    - /bin/cp -R dist/* $DEPLOYPATH/
+    - /bin/cp -R backend/* $DEPLOYPATH/api/
+    - /bin/chmod 644 $DEPLOYPATH/.htaccess
+    - /bin/chmod 755 $DEPLOYPATH/api/
+    - echo "Deploy concluído com sucesso!"
+

@@ -1,0 +1,53 @@
+# 📋 Instruções de Deploy - HostGator
+
+## ✅ Build Concluído!
+
+### Arquivos Prontos:
+- ✅ Frontend: pasta dist/
+- ✅ Backend: pasta backend/
+- ✅ Schema: database/mysql_schema_auto.sql
+
+## 📤 Próximos Passos:
+
+### 1. Criar Banco MySQL (cPanel)
+- Acesse: cPanel > MySQL Databases
+- Crie banco: ainfotech_db
+- Crie usuário e associe ao banco
+
+### 2. Importar Schema (phpMyAdmin)
+- Acesse: phpMyAdmin
+- Selecione o banco criado
+- Importe: database/mysql_schema_auto.sql
+
+### 3. Enviar Frontend
+- Upload de dist/ → public_html/
+- Certifique-se que .htaccess foi enviado
+
+### 4. Enviar Backend
+- Upload de backend/ → public_html/api/
+- Crie .env em public_html/api/ (copie de .env.example)
+- Configure credenciais MySQL
+- Instale dependências: cd api && npm install
+- Inicie Node.js app no cPanel
+
+### 5. Configurar Variáveis
+- Frontend: VITE_API_URL=https://seudominio.com.br/api
+- Backend: Configure .env com credenciais MySQL
+
+## 🔐 Criar Usuário Admin
+
+Execute no phpMyAdmin após importar schema:
+```sql
+-- Gerar hash primeiro:
+-- node backend/scripts/generate-password.js "sua_senha"
+
+UPDATE users 
+SET password_hash = 'HASH_GERADO' 
+WHERE email = 'admin@ainfotech.com';
+```
+
+## ✅ Pronto!
+
+Acesse seu site e faça login com:
+- Email: admin@ainfotech.com
+- Senha: (a que você configurou)
