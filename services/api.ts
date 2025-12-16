@@ -3,7 +3,8 @@
  * Conecta com backend Node.js no HostGator
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+// API PHP no HostGator
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 // Tipos
 interface ApiResponse<T> {
